@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta charset="utf-8">
+	<title>chat</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<div class="sign_name">
+		<input type="text" class="input_name" placeholder="please input you name">
+		<input type="button" class="input_btn" value="确定">
+	</div>
+	<div class="chat">
+		<p class="head">您好，<span id="username" class="right_M"></span>当前在线人数：<span id="usernum"></span></p>
+		<ul class="chat_body" id="chat_body">
+		</ul>
+		<div class="input">
+			<input id="context" type="text"><input id="btn" value="send" type="button">
+		</div>
+	</div>
+	<script type="text/javascript" src="chat.js"></script>
+</body>
+</html>

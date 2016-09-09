@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next){
 	console.log(req.body);
-	console.log(req.files.file.path)
+/*	console.log(req.files.file.path)
 	fs.readFile(req.files.file.path, function(err, data){
 		if(err) console.log(err);
 		fs.writeFile(__dirname + '1.png', data, function(err){
@@ -20,7 +20,7 @@ router.post('/', function(req, res, next){
 				console.log('success');
 			}
 		})
-	})
+	})*/
 })
 
 module.exports = router;

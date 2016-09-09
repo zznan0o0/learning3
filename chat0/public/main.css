@@ -1,0 +1,119 @@
+*{padding: 0; border: 0; margin: 0;}
+ul,ol,dl{list-style: none;}
+
+html, body{height: 97%; overflow:hidden;}
+
+@media screen and (max-height: 300px) {
+	.chat{padding: 0;}
+}
+body{background: #F1F1F1;}
+.left_M{margin-left: 10px;}
+.right_M{margin-right: 10px;}
+
+.chat{
+	padding: 0 20px 0 20px;
+	height: 100%;
+}
+.head{
+	height: 5%;
+	margin-top: 2%; margin-bottom: 1%;
+	font-size: 1.2em; font-weight: bold;
+}
+
+.chat_body{
+	display: block; overflow-x: hidden; overflow-y: auto;
+	height: 80%;
+	border: 1px solid #96CFF2;
+	border-radius: 5px;
+	background: #F5F5F5;
+}
+
+.chat_body li{
+	font-size: 1rem;
+	margin: 10px 20px 10px 20px;
+}
+
+.chat_body li.broadcast{
+	text-align: center;
+	color: #8E8E8E;
+}
+
+.chat_body li.self{
+	text-align: right;
+}
+
+.self_talk, .self_name, .other_name, .other_talk{
+	display: inline-block;
+}
+
+.self_talk{
+	position: relative;
+	margin-right: 15px; padding: 15px; border-radius: 10px;
+	background: #28A1F3; color: #fff;
+	max-width: 70%;
+	word-wrap: break-word;
+	text-align: left;
+}
+.self_talk:after{
+	content: "";
+	position: absolute; top: 15px; right: -10px;
+	width: 0; height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 20px solid #28A1F3;
+}
+
+.self_name{
+	color: #65B9DB;
+	font-weight: bold;
+	vertical-align: top;
+	padding-top: 15px;
+}
+
+.other_name{
+	color: #F9B56F;
+	font-weight: bold;
+	vertical-align: top;
+	padding-top: 15px;
+}
+.other_talk{
+	position: relative;
+	margin-left: 15px; padding: 15px; border-radius: 10px;
+	background: #F3A228; color: #fff;
+	max-width: 70%;
+	word-wrap: break-word;
+	text-align: left;
+}
+
+.other_talk:after{
+	content: "";
+	position: absolute; top: 15px; left: -10px;
+	width: 0; height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 20px solid #F3A228;
+}
+
+.input{
+	height: 6%;
+	margin-top: 1%;
+}
+#context, #btn{
+	height: 98%;
+}
+#context{
+	width: 66%;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 0 2% 0 2%;
+}
+
+#btn{
+	width: 30%;
+	font-size: 1.2em;
+}
+
+@media screen and (min-height: 1000px) {
+	#context{width: 81%;}
+	#btn{width: 15%;}
+}

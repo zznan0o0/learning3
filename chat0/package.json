@@ -1,0 +1,15 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "jianxin",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.4.8"
+  }
+}
