@@ -63,7 +63,7 @@ SelectDate.prototype = {
 				this.className = 'on';
 				that.month = this.innerHTML;
 				that.element.dateDIv.style.display = 'none';
-				that.input.value = '' + that.year + '.' + that.month;
+				that.input.value = '' + that.year + that.month;
 			}
 		}
 	},
@@ -108,7 +108,7 @@ SelectDate.prototype = {
 		var yearLi = this.type == 'end' ? '<li>至今</li>' : '';
 
 		for(var i = 0; i <= length; i++){
-			yearLi += '<li>' + (nowYear - i) + '</li>'
+			yearLi += '<li>' + (nowYear - i) + '年</li>'
 		}
 		
 		this.element.yearUl.innerHTML = yearLi;
