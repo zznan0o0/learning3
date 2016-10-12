@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="selectdate.css">
+	<script type="text/javascript" src="selectdate.js"></script>
+</head>
+<body>
+	<div class="selectDate">
+		<input type="text" id="input" class="selectDate_input">
+	</div>
+	<div class="selectDate">
+		<input type="text" id="input2" class="selectDate_input">
+	</div>
+	<script type="text/javascript">
+		window.onload = function(){
+			var selectDate = new SelectDate('input');
+			var selectDate2 = new SelectDate('input2', 'end')
+		}
+	</script>
+</body>
+</html>

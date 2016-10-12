@@ -1,0 +1,97 @@
+*{padding: 0; border: 0; margin: 0;}
+.clearfix{zoom:1;}.clearfix:after{content:".";height:0;display:block;clear:both;visibility:hidden;}
+body{padding: 50px;}
+ul{list-style: none;}
+
+.selectDate_input{
+	width: 147px; height: 30px;
+	border: 1px solid #ccc;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.selectDate_button{
+	display: inline-block;
+	width: 30px; height: 30px;
+	border: 1px solid #ccc; border-left: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	background: url(btn.png) center center no-repeat;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.selectDate{
+	position: relative;
+}
+
+.dateDiv{
+    position: absolute;
+    left: -1px;
+    bottom: -160px;
+    height: 160px;
+    width: 244px;
+    background-color: #fff;
+    z-index: 5000;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px #e7e7e7;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.ul_year{
+    float: left;
+    width: 90px;
+    height: 160px;
+    overflow: auto;
+}
+
+.ul_year>li{
+    width: 72px;
+    height: 32px;
+    cursor: pointer;
+    line-height: 32px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+}
+
+.ul_year>li:hover{
+	background-color: #f4f4f4;
+}
+.ul_year>li.on{
+	background-color: #ec7467;
+    color: #fff;
+}
+
+.ul_month{
+	float: left;
+	word-wrap: normal;
+    padding: 20px 0 15px 15px;
+    background-color: #fff;
+    width: 136px;
+}
+.ul_month>li{
+    float: left;
+    cursor: pointer;
+    width: 33%;
+    height: 22px;
+    line-height: 22px;
+    color: #333;
+    background-color: #fff;
+    margin: 0 0 10px;
+    text-align: center;;
+    border-radius: 5px;
+}
+
+.ul_month>li:hover{
+	background-color: #f4f4f4;
+}
+.ul_month>li.on{
+	background-color: #ec7467;
+    color: #fff;
+}
