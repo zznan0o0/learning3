@@ -63,6 +63,9 @@ SelectDate.prototype = {
 				this.className = 'on';
 				that.month = this.innerHTML;
 				that.element.dateDIv.style.display = 'none';
+				if ((that.year + '').indexOf('年') < 0) {
+				    that.year = that.year + '年';
+				}
 				that.input.value = '' + that.year + that.month;
 			}
 		}
@@ -104,7 +107,6 @@ SelectDate.prototype = {
 
 	eachYear: function(nowYear){
 		var length = nowYear - 1990
-		console.log(this.type)
 		var yearLi = this.type == 'end' ? '<li>至今</li>' : '';
 
 		for(var i = 0; i <= length; i++){
