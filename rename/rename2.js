@@ -21,7 +21,7 @@ let rename = (imgPath) => {
 		numArr.sort((a, b) => a - b);
 
 		numArr.forEach((item, index) => {
-			fs.renameSync(`${imgPath}/${nameBefore}${item}${nameAfter}`, `${imgPath}/${nameBefore}${index + 1}${nameAfter}`);
+			fs.renameSync(`${imgPath}/${nameBefore}${item}${nameAfter}`, `${imgPath}/glass_${index + 1}${nameAfter}`);
 		});
 
 		console.log('after=========================>');

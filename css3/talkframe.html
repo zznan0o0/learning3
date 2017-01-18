@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+
+		.talkframe{
+			position: relative;
+			display: inline-block;
+			width: 300px; height: 160px; line-height: 160px;
+			background: #00aabb;
+			border-radius: 5px;
+			text-align: center;
+			color: #fff; font-size: 26px; font-weight: bold;
+		}
+
+		.talkframe:before{
+			content: '';
+			position: absolute; top: 160px; left: 50%;
+			display: inline-block;
+			width: 0; height: 0;
+			margin-left: -20px;
+			border-right: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+			border-top: 20px solid #00aabb;
+			border-left: 20px solid #00aabb;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="talkframe">
+		talkframe
+	</div>
+</body>
+</html>
