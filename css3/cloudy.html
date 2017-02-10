@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+		.cloudy{
+			display: inline-block;
+			position: relative;
+			width: 400px; height: 600px;
+			text-align: center;
+			line-height: 50px;
+			color: #fff; font-weight: bold; font-size: 200%;
+			background: #2EB5E5;
+		}
+
+		.cloudy:before{
+			content: '';
+			display: inline-block;
+			position: absolute; left: 20%; top: 40%;
+			width: 100px; height: 100px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 
+				40px -40px 0 -5px #fff,
+				110px -30px 0 -10px #fff,
+				160px 0px 0 -10px #fff,
+				50px 20px 0 -5px #fff,
+				100px 20px 0 -15px #fff,
+				50px -60px 0 -5px #C8C8C8 ,
+				120px -50px 0 -10px #C8C8C8 ,
+				170px -20px 0 -15px #C8C8C8;
+
+			animation: cloudAnimate 3s ease-in-out  infinite alternate;
+		}
+
+		.cloudy:after{
+			content: '';
+			display: inline-block;
+			position: absolute; left: 20%; bottom: 30%;
+			width: 260px; height: 30px;
+			background: rgba(0, 0, 0, .5);
+			border-radius: 50%;
+			transform: scale(1);
+			animation: shadowAnimate 3s ease-in-out  infinite alternate;
+		}
+
+		@keyframes cloudAnimate{
+			100%{
+				top: 30%;
+			}
+		}
+
+		@keyframes shadowAnimate{
+			100%{
+				transform: scale(.7);
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="cloudy">cloudy</div>
+</body>
+</html>
