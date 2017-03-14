@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+
+		.safari{
+			display: inline-block;
+			position: relative;
+			width: 200px; height: 200px;
+			border: 5px solid #E8E8E8;
+			border-radius: 50%;
+			box-shadow: 
+				-1px 3px 3px 1px #999,
+				-1px 3px 3px 1px #999  inset;
+			background-repeat: no-repeat;
+			background-size: 
+				50% 50%, 
+				20px 2px, 
+				20px 2px, 
+				2px 20px, 
+				2px 20px, 
+				100% 100%;
+
+			background-position: 
+				center center, 
+				10px center, 
+				170px center, 
+				center 10px, 
+				center 170px,
+				0 0;
+
+			background-image:
+				radial-gradient(transparent 0%, transparent 30%, #fff 30%, #fff 35%, transparent 35%, transparent 100%),
+				linear-gradient(#fff, #fff),
+				linear-gradient(#fff, #fff),
+				linear-gradient(#fff, #fff),
+				linear-gradient(#fff, #fff),
+				linear-gradient(#1DE3FF, #1F52EF);
+		}
+
+		.safari:before{
+			content: "";
+		    position: absolute; z-index: 2;
+		    top: 10px;
+		    left: 50%;
+		    border-radius: 10px;
+		    border-bottom: 100px solid rgba(255,0,0,.9);
+		    border-left: 10px solid transparent;
+		    border-right: 10px solid transparent;
+		    transform-origin: center 90px;
+		    transform: translate(-50%, 0%) rotate(220deg);
+
+		}
+		.safari:after{
+		    content: "";
+		    position: absolute; 
+		    top: 10px;
+		    left: 50%;
+		    border-radius: 10px;
+		    border-bottom: 100px solid rgba(255,255,255,.9);
+		    border-left: 10px solid transparent;
+		    border-right: 10px solid transparent;
+		    transform-origin: center 90px;
+		    z-index: 1;
+		    transform: translate(-50%, 0%) rotate(40deg);
+		}
+
+		.safari:hover::before{
+            transition:transform 1s;
+            transform:translate(-50%, 0%) rotate(250deg);
+        }
+        .safari:hover::after{
+            transition:transform 1s;
+            transform:translate(-50%, 0%) rotate(70deg);
+        }
+	</style>
+</head>
+<body>
+<div class="safari"></div>
+</body>
+</html>

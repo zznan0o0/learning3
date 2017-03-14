@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+		.sogou{
+			display: inline-block;
+			position: relative;
+			width: 200px; height: 200px;
+			border: 8px solid #fff;
+			border-radius: 50%;
+			box-shadow: 3px 0px 6px 0 #ccc;
+			background: #337FC4;
+			overflow: hidden;
+		}
+
+		.sogou:before{
+			content: 'S';
+			display: inline-block;
+			position: absolute;
+			line-height: 185px;
+			top:0;left:0;right:0;bottom:0;
+			color:#fff;
+			font-weight:600;
+			font-size:320px;
+			text-align:center;
+			font-family: Microsoft Yahei;
+			transform: rotate(2deg);
+			text-shadow: 
+				3px 0 0 #337FC4,
+				-5px 0px 0px #CDE4F0,
+				0px 8px 0px #387FBF;
+		}
+	</style>
+</head>
+<body>
+<div class="sogou"></div>
+</body>
+</html>

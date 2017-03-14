@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+		.IE{
+			display: inline-block;
+			position: relative;
+			width: 200px; height: 200px;
+			border-radius: 50%;
+			background: 
+				radial-gradient(transparent 0%, transparent 35%, #0099cc 35%, #0099cc 100%);
+		}
+		.IE:before{
+			content: '';
+			display: inline-block;
+			position: absolute; left: 50%; top: 50%;
+			width: 100px; height: 25px;
+			margin-left: -50px; margin-top: -25px;
+			background: #0099cc;
+			box-shadow: 50px 25px 0 0 #fff;
+		}
+
+		.IE:after{
+			content: '';
+			display: inline-block;
+			position: absolute; left: 50%; top: 50%;
+			width: 260px; height: 100px;
+			margin-left: -120px; margin-top: -40px;
+			border-radius: 50%;
+			box-shadow: 
+				0px -10px 0 10px #0099cc,
+				-10px -13px 0 10px #fff;
+			transform: rotate(-35deg);
+		}
+	</style>
+</head>
+<body>
+<div class="IE"></div>
+</body>
+</html>

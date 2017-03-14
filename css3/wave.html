@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+		.wave{
+			display: inline-block;
+			position: relative;
+			width: 444px; height: 444px;
+			background: url(13981470.jpg) 0 0 no-repeat;
+		}
+		.wave:before, .wave:after{
+			content: '';
+			position: absolute;
+ 			top: 50%; left: 50%;
+			border-radius: 50%;
+			background-image: url(13981470.jpg);
+			background-position: center center;
+		}
+		.wave:before{
+			z-index: 1;
+			animation: wave 2s ease-out infinite;
+		}
+	 	.wave:after{
+	 		z-index: 2;
+	 		animation: wave 2s ease-out .2s infinite;
+	 	}
+
+	 	@keyframes wave{
+	 		0%{
+	 			transform: translate(-50%, -50%) scale(1.4);
+				width: 30px; height: 30px;
+	 		}
+
+	 		50%{
+				width: 444px; height: 444px;
+				transform: translate(-50%, -50%) scale(1);
+	 		}
+
+	 		100%{
+	 			width: 444px; height: 444px;
+				transform: translate(-50%, -50%) scale(1);
+	 		}
+	 	}
+	</style>
+</head>
+<body>
+	<div class="wave"></div>
+</body>
+</html>

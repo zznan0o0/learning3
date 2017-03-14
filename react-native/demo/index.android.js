@@ -18,6 +18,9 @@ import {
 
 } from 'react-native';
 
+import aaa from './a.js';
+console.log(aaa)
+
 class MainView extends Component{
 	constructor() {
 	  super();

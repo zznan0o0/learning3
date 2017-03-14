@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+
+		.captainAmerica{
+			display: inline-block;
+			position: relative;
+			width: 400px; height: 400px;
+			border-radius: 50%;
+			border: 1px solid #ccc;
+			background: 
+				linear-gradient(45deg, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, 0) 65%),
+				linear-gradient(-45deg, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, 0) 65%),
+				linear-gradient(0deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, 0) 65%),
+				linear-gradient(90deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, 0) 65%),
+				radial-gradient(#0033b0 20%, #0033b0 20%, #ce0021 20%, #ce0021 35%, #eee 35%, #eee 55%, #ce0021 55%, #ce0021 100%);
+		}
+
+		.captainAmerica:before{
+			content: '★';
+			display: inline-block;
+			position: absolute; top: 50%; left: 50%;
+			font-family: simsun,Tahoma,Helvetica,Arial,SimHei,sans-serif;
+			color: #ddd; font-size: 100px;
+			text-shadow: 2px 1px 2px #777;
+			margin-left: -50px; margin-top: -57px;
+		}
+
+	</style>
+</head>
+<body>
+<div class="captainAmerica"></div>
+</body>
+</html>

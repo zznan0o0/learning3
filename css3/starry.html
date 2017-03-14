@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>starry</title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+
+		.starry_container{
+			display: inline-block;
+			position: relative;
+			width: 400px; height: 600px;
+			text-align: center;
+			line-height: 50px;
+			color: #fff; font-weight: bold; font-size: 200%;
+			background: #222233;
+		}
+		.starry{
+			display: inline-block;
+			position: absolute; top: 200px; left: 200px; z-index: 2;
+			width: 5px; height: 5px;
+			border-radius: 50%;
+			animation: animate_star 2s ease-out infinite alternate; 
+		}
+		.starry:before{
+			content: '';
+			position: absolute;
+			width: 200px; height: 200px;
+			border-radius: 50%;
+			box-shadow: -60px 0 0 0 #fff;
+			animation: animate_moon 5s linear infinite;			
+		}
+
+		@keyframes animate_moon{
+			0%{
+				transform: rotate(0deg);
+			}
+
+			25%{
+				transform: rotate(10deg);
+			}
+
+			50%{
+				transform: rotate(0deg);
+			}
+
+			75%{
+				transform: rotate(-10deg);
+			}
+
+			100%{
+				transform: rotate(0deg);
+			}
+		}
+
+		@keyframes animate_star{
+			0%{
+				box-shadow: 
+					-10px -10px 0 0 #fff,
+					-20px -20px 0 0 transparent,
+					-20px -5px 0 0 #fff,
+					110px 10px 0 0 #fff,
+					120px 20px 0 0 transparent,
+					120px 5px 0 0 #fff,
+					10px -20px 0 0 #fff,
+					20px -30px 0 0 transparent,
+					20px -15px 0 0 #fff,
+					-100px 50px 0 0 #fff,
+					-90px 80px 0 0 #fff,
+					-80px 90px 0 0 transparent,
+					-70px 110px 0 0 #fff
+
+			}
+
+			100%{
+				box-shadow: 
+					-10px -10px 0 0 transparent,
+					-20px -20px 0 0 #fff,
+					-20px -5px 0 -3px transparent,
+					100px 10px 0 0 transparent,
+					120px 20px 0 0 #fff,
+					120px 5px 0 -3px transparent,
+					10px -20px 0 0 transparent,
+					20px -30px 0 0 #fff,
+					20px -15px 0 -3px transparent,
+					-100px 50px 0 0 transparent,
+					-90px 80px 0 0 transparent,
+					-80px 90px 0 0 #fff,
+					-70px 110px 0 -3px transparent
+
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="starry_container">
+	.starry
+	<div class="starry"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>five_star</title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+
+		.five_star{
+			display: inline-block;
+			position: relative;
+			width: 0; height: 0;
+			border-left: 25px transparent solid;
+			border-right: 25px transparent solid;
+			border-top: 0;
+			border-bottom: 80px #98DBE3 solid;
+			-webkit-filter: drop-shadow(1px 3px 3px #ccc);
+		}
+
+		.five_star:before{
+			content: '';
+			display: inline-block;
+			position: absolute; left: -90px; top: 60px;
+			width: 0; height: 0;
+			border-top: 0;
+			border-left: 90px solid transparent;
+			border-right: 90px solid transparent;
+			border-bottom: 60px solid #98DBE3;
+			transform: rotate(-35deg);
+		}
+
+		.five_star:after{
+			content: '';
+			display: inline-block;
+			position: absolute; left: -90px; top: 60px;
+			width: 0; height: 0;
+			border-top: 0;
+			border-left: 90px solid transparent;
+			border-right: 90px solid transparent;
+			border-bottom: 60px solid #98DBE3;
+			transform: rotate(35deg);
+		}
+	</style>
+</head>
+<body>
+<div class="five_star"></div>
+</body>
+</html>

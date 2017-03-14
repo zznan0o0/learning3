@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin: 0; padding: 0; border: 0;}
+		body{padding-top: 100px;text-align: center;}
+		.firfox{
+			display: inline-block;
+			position: relative;
+			width: 200px; height: 200px;
+			border: 8px solid #F5EDED;
+			border-radius: 50%;
+			box-shadow: 3px 0px 6px 0 #ccc;
+			overflow: hidden;
+			background: #F48D00;
+		}
+		.firfox:before{
+			content: '';
+			display: inline-block;
+			position: absolute; top: 90px; left: 50px;
+			width: 48px; height: 48px;
+			border-radius: 50%;
+			background: #00B2F9;
+			box-shadow: 
+				-10px 0 0 5px rgba(0, 178, 249, .2),
+	            16px -60px 0 8px rgba(0, 178, 249, .2),
+	            -30px -50px 0 8px #F48D00,
+	            25px -38px 0 0px #00B2F9,
+	            -30px -30px 0 12px #F48D00,
+	            15px -60px 0 8px #00B2F9,
+	            33px 31px 0 -15px #00B2F9,
+	            30px 17px 0 -13px #F48D00,
+	            20px -10px 0 0px #00B2F9,
+	            -8px -0px 0 19px #F48D00,
+	            30px 17px 0 0px #00B2F9,
+	            24px 30px 0 15px #F48D00,
+	            20px -6px 0 28px #00B2F9,
+	            45px 10px 0 35px #F48D00,
+	            -5px -57px 0 8px #F48D00,
+	            20px -23px 0 45px #00B2F9,
+	            -5px -80px 0 8px #00B2F9,
+	            -30px -70px 0 8px #F48D00,
+	            -5px -57px 0 8px #F48D00,
+	            43px -11px 0 55px #F48D00,
+	            22px -39px 0 55px #00B2F9;
+
+		}
+
+		.firfox:after{
+			content: "";
+			width: 0px;
+			height: 2px;
+			background: linear-gradient(90deg,#F48D00 75% ,#333 30% );
+			background-size: 35px 35px;
+			position: absolute;
+			top: 50px;
+			left: 73px;
+			border: solid;
+			border-width: 12px 0 15px 30px;
+			border-color: #00B2F9 #fff #00B2F9 transparent;
+			box-shadow: inset 0px 0 0 50px #333;
+        }
+	</style>
+</head>
+<body>
+<div class="firfox"></div>
+</body>
+</html>
