@@ -13,11 +13,14 @@ ParticleText.prototype = {
 	init: function(){
 		this.dots = [];
 		this.timer = null;
+		this.timer2 = null;
+		this.centerLineX = this.canvas.width / 2;
+		this.radian = 0;
 
 		this.drawText();
 		this.getImageData();
 		this.drawDot();
-
+		this.animationRotate();
 		this.inputChange();
 	},
 
@@ -141,15 +144,53 @@ ParticleText.prototype = {
 
 	inputChange: function(){
 		this.input.onchange = function(){
+			clearInterval(this.timer2)
 			clearInterval(this.timer);
 			this.rollDotsXY();
 			this.animationMoveDot(function(){
 				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 				this.drawText(this.input.value);
 				this.getImageData2();
-				this.animationMoveDot();
+				this.animationMoveDot(function(){
+					this.animationRotate();
+				}.bind(this));
 			}.bind(this));
 
 		}.bind(this);
+	},
+
+	drawCenterLine: function(){
+		this.context.beginPath();
+		this.context.moveTo(this.centerLineX, 0);
+		this.context.lineTo(this.centerLineX, this.canvas.height);
+		this.context.fill();
+		this.closePath();
+	},
+
+	drawRotate: function(){
+
+		if(this.radian < 360){
+			for(var i = 0; i < this.dots.length; i++){
+				var newX = Math.cos(this.radian) * (this.centerLineX - this.dots[i].x) + this.centerLineX;
+
+				this.context.beginPath();
+				this.context.arc(newX, this.dots[i].y, 1, 0, Math.PI * 2, true);
+				this.context.fill();
+				this.context.closePath();
+			}
+
+			this.radian += 0.1;
+		}
+		else{
+			this.radian = 0;
+		}
+	},
+
+	animationRotate: function(){
+		clearInterval(this.timer2);
+		this.timer2 = setInterval(function(){
+			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+			this.drawRotate();
+		}.bind(this), 50)
 	}
 }
