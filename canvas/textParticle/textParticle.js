@@ -25,12 +25,12 @@ ParticleText.prototype = {
 	},
 
 	drawText: function(text){
-		text = text ? text : 'HELLOW';
+		text = text ? text : 'HELLOWWORlD';
 
 		this.context.beginPath();
 		this.context.font = '80px  Microsoft YaHei';
 		this.context.fillStyle = 'rgba(0, 0, 0, 1)';
-		this.context.fillText(text, 150, 150);
+		this.context.fillText(text, 0, 150);
 		this.context.fill();
 		this.context.closePath();
 	},
@@ -159,14 +159,6 @@ ParticleText.prototype = {
 		}.bind(this);
 	},
 
-	drawCenterLine: function(){
-		this.context.beginPath();
-		this.context.moveTo(this.centerLineX, 0);
-		this.context.lineTo(this.centerLineX, this.canvas.height);
-		this.context.fill();
-		this.closePath();
-	},
-
 	drawRotate: function(){
 
 		if(this.radian < 360){
@@ -191,6 +183,6 @@ ParticleText.prototype = {
 		this.timer2 = setInterval(function(){
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 			this.drawRotate();
-		}.bind(this), 50)
+		}.bind(this), 50);
 	}
 }
