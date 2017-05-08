@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main(){
+	char a[] = "0000000000000004asdasdasdjaisjdasjdklasjdklasjdkljsakldjksajdkaslllllllllllllllllllllllllllllllllllllllllllllllllllllllldjaskljadsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdddddddddddddddddddddddddddddddddddddddddddddddfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdskaljdlkasdjklasjdkasljdklasjdklsajdklasjd645ad4a6s4d6asd46as4d65000000000000000000000000000000000000000000000000";
+
+	cout << a[424] << endl;
+	return 0;
+}
