@@ -183,3 +183,26 @@
 
 ##动态内存
     
+##预处理器
+    #define macro-name replacement-text 
+    #ifndef NULL
+       #define NULL 0
+    #endif
+    # 和 ## 预处理运算符在 C++ 和 ANSI/ISO C 中都是可用的。# 运算符会把 replacement-text 令牌转换为用引号引起来的字符串。
+    ## 运算符用于连接两个令牌
+    
+    _LINE__ 这会在程序编译时包含当前行号。
+    __FILE__    这会在程序编译时包含当前文件名。
+    __DATE__    这会包含一个形式为 month/day/year 的字符串，它表示把源文件转换为目标代码的日期。
+    __TIME__    这会包含一个形式为 hour:minute:second 的字符串，它表示程序被编译的时间。
+
+##信号处理
+    SIGABRT 程序的异常终止，如调用 abort。
+    SIGFPE  错误的算术运算，比如除以零或导致溢出的操作。
+    SIGILL  检测非法指令。
+    SIGINT  接收到交互注意信号。
+    SIGSEGV 非法访问内存。
+    SIGTERM 发送到程序的终止请求。
+
+    void (*signal (int sig, void (*func)(int)))(int); 
+    int raise (signal sig);
