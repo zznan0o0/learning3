@@ -203,6 +203,45 @@
     SIGINT  接收到交互注意信号。
     SIGSEGV 非法访问内存。
     SIGTERM 发送到程序的终止请求。
-
+    
     void (*signal (int sig, void (*func)(int)))(int); 
     int raise (signal sig);
+
+##多线程
+    #include <pthread.h>
+    pthread_create (thread, attr, start_routine, arg) 
+    
+    thread  指向线程标识符指针。
+    attr    一个不透明的属性对象，可以被用来设置线程属性。您可以指定线程属性对象，也可以使用默认值 NULL。
+    start_routine   线程运行函数起始地址，一旦线程被创建就会执行。
+    arg 运行函数的参数。它必须通过把引用作为指针强制转换为 void 类型进行传递。如果没有传递参数，则使用 NULL。
+    
+    终止线程
+    #include <pthread.h>
+    pthread_exit (status) 
+
+    HANDLE CreateThread(
+      LPSECURITY_ATTRIBUTES lpsa, 
+      DWORD cbStack, 
+      LPTHREAD_START_ROUTINE lpStartAddr, 
+      LPVOID lpvThreadParam, 
+      DWORD fdwCreate, 
+      LPDWORD lpIDThread
+    );
+
+    -1-第一个参数是安全属性结构，主要控制该线程句柄是否可为进程的子进程继承使用，默认使用NULL时表示不能继承；若想继承线程句柄，则需要设置该结构体，将结构体的bInheritHandle成员初始化为TRUE；
+    -2-cbStack表示的线程初始栈的大小，若使用0则表示采用默认大小初始化；
+    -3-lpStartAddr表示线程开始的位置，即线程要执行的函数代码，这点有点类似于回调函数的使用；
+    -4-lpvThreadParam用来接收线程过程函数的参数，不需要时可以设置为NULL；
+    -5-fdwCreate表示创建线程时的标志，CREATE_SUSPENDED表示线程创建后挂起暂不执行，必须调用ResumeThread才可以执行，0表示线程创建之后立即执行
+    -6-lpIDThread用来保存线程的ID；
+    
+    LPVOID是一个没有类型的指针，也就是说你可以将任意类型的指针赋值给LPVOID类型的变量(一般作为参数传递)，然后在使用的时候再转换回来。
+
+    HANDLE（句柄）是Windows操作系统中的一个概念。在Windows程序中，有各种各样的资源（窗口、图标、光标等），系统在创建这些资源时会为它们分配内存，并返回标示这些资源的标示号，即句柄。句柄指的是一个核心对象在某一个进程中的唯一索引，而不是指针。由于地址空间的限制，句柄所标识的内容对进程是不可见的，只能由操作系统通过进程句柄列表来进行维护。句柄列表：每个进程都要创建一个句柄列表，这些句柄指向各种系统资源，比如信号量，线程，和文件等，进程中的所有线程都可以访问这些资源。
+    
+    其实我们编程时输出一下句柄的值就可以发现这些值往往非常小（<100）。由此就可以看出句柄的性质了。
+    
+    无效的返回值为: INVALID_HANDLE_VALUE
+    
+    DWORD WINAPI 返回 DWORD（32位数据）的 API 函数
