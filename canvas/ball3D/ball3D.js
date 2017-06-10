@@ -49,7 +49,7 @@ class canvas3D{
 
     for(let i = 0; i < total; i++){
       let horn1 = Math.acos((2 * (1 + i) - 1) / total - 1),
-        horn2 = horn1 * Math.sqrt(all * Math.PI),
+        horn2 = horn1 * Math.sqrt(total * Math.PI),
         x = radius * Math.sin(horn1) * Math.cos(horn2),
         y = radius * Math.sin(horn1) * Math.sin(horn2),
         z = radius * Math.cos(horn1);
@@ -72,10 +72,12 @@ class Ball3D extends canvas3D{
       radius: props && props.radius || this.canvas.width / 4,
       total: props && props.radius || 500
     }
+
+    this.init();
   }
 
   init(){
-    //this.initBall();
+    this.initBall();
     this.drawBG();
   }
 
@@ -84,9 +86,13 @@ class Ball3D extends canvas3D{
   }
 
   drawBG(){
-    this.ctx.baginPath();
+    this.ctx.beginPath();
     this.ctx.fillStyle = '#000';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.closePath();
+  }
+
+  clean(){
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
