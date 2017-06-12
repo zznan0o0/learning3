@@ -63,26 +63,57 @@ class canvas3D{
 
 class Ball3D extends canvas3D{
   constructor(canvas, props) {
-    super();
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    let originX = props && props.originX || canvas.width / 2,
+      originY = props && props.originY || canvas.height / 2,
+      props3D = {originX: originX, originY: originY};
+
+    super(props3D);
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.props = {
-      radius: props && props.radius || this.canvas.width / 4,
-      total: props && props.radius || 500
+      radius: props && props.radius || this.canvas.width < this.canvas.height ? this.canvas.width / 4 : this.canvas.height / 4,
+      r: 1.5,
+      total: props && props.radius || 500,
+      fallLength: props && props.fallLength || 500,
+      originX: originX, 
+      originY: originY,
+      angleX: 0,
+      angleY: 0,
+      angleVal: props && props.angleVal || 0.0001
     }
 
     this.init();
   }
 
   init(){
-    this.initBall();
     this.drawBG();
+    this.initBall();
+    this.eachDrawPoint();
+    this.mouseMove();
+    this.animate();
   }
 
   initBall(){
     this.ballCoordinate = super.createBallCoordinate(this.props.total, this.props.radius);
+  }
+
+  eachDrawPoint(){
+    this.ballCoordinate.forEach((item, index) => {
+      this.drawPoint(item);
+    })
+  }
+
+  drawPoint(point){
+    let scale = this.props.fallLength / (this.props.fallLength - point.z),
+      alpha = (point.z + this.props.radius) / (2 * this.props.radius);
+
+    this.ctx.beginPath();
+    this.ctx.arc(point.x + this.props.originX, point.y + this.props.originY, this.props.r * scale, 0, 2 * Math.PI);
+    this.ctx.fillStyle = 'rgba(255, 255, 255, ' + (alpha + 0.5) + ')';
+    this.ctx.fill();
+    this.ctx.closePath();
   }
 
   drawBG(){
@@ -94,5 +125,32 @@ class Ball3D extends canvas3D{
 
   clean(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  mouseMove(){
+    window.addEventListener('mousemove', (e) => {
+      let x = e.clientX - this.props.originX,
+        y = e.clientY - this.props.originY;
+
+      this.props.angleX = y * this.props.angleVal;
+      this.props.angleY = x * this.props.angleVal;
+    });
+  }
+
+  rotate(){
+    this.ballCoordinate.forEach((item, index) => {
+        this.ballCoordinate[index] = super.rotateX(this.ballCoordinate[index].x, this.ballCoordinate[index].y, this.ballCoordinate[index].z, this.props.angleX);
+        this.ballCoordinate[index] = super.rotateY(this.ballCoordinate[index].x, this.ballCoordinate[index].y, this.ballCoordinate[index].z, this.props.angleY);
+    })
+  }
+
+  animate(){
+    window.requestAnimationFrame(() => {
+      this.clean();
+      this.rotate();
+      this.drawBG();
+      this.eachDrawPoint();
+      this.animate();
+    })
   }
 }
