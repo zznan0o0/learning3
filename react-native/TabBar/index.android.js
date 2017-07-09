@@ -16,6 +16,17 @@ import {
 
 import TabBarNavigator from './common/TabBar.js';
 
+const selects = [
+  {
+    title: '首页',
+    url: 'http://atjubo.oss-cn-hangzhou.aliyuncs.com/0/image/20160819/20160819152802_0663.jpg'
+  },
+
+  {
+    title: '第二页',
+    url: 'http://atjubo.oss-cn-hangzhou.aliyuncs.com/0/image/20160819/20160819152802_0663.jpg'
+  },
+]
 
 export default class TabBar extends Component {
   constructor(props) {
@@ -27,7 +38,7 @@ export default class TabBar extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <TabBarNavigator/>
+        <TabBarNavigator selects={selects}/>
       </View>
     );
   }
