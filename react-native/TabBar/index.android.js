@@ -32,13 +32,15 @@ export default class TabBar extends Component {
   constructor(props) {
     super(props);
   
-    this.state = {};
+    this.state = {
+      text: true
+    };
   }
 
   render() {
     return (
       <View style={{flex:1}}>
-        <TabBarNavigator selects={selects}/>
+        <Text onPress={() => {this.setState({text: !this.state.text}); }}>{this.state.text ? 'aaa' : 'bbb'}</Text>
       </View>
     );
   }
