@@ -28,7 +28,7 @@ const testData = {
     }
   ],
 
-  veidoUrl: 'https://cdn2.unrealengine.com/ueOverview%2FTopCarousel%2FSizzleForWeb2-3ac4d0248789094033bcfe038a67128bd8bb5733.mp4'
+  vedioUrl: 'https://cdn2.unrealengine.com/ueOverview%2FTopCarousel%2FSizzleForWeb2-3ac4d0248789094033bcfe038a67128bd8bb5733.mp4'
 }
 
 
@@ -133,7 +133,7 @@ export default class VedioList extends Component{
   }
 
   _press(row){
-    return () => this.props.navigation.navigate('VedioDetail', {title: row.title, voted: row.voted});
+    return () => this.props.navigation.navigate('VedioDetail', {title: row.title, voted: row.voted, vedioUrl: testData.vedioUrl});
   }
 
   _hasMore(){
