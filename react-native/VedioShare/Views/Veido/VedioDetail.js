@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  TouchableHighlight,
   FlatList,
   StyleSheet,
   View,
@@ -32,8 +33,17 @@ for(let i = 0; i < 30; i++){
 const {width, height} = Dimensions.get('window');
 
 class Vedio extends Component{
-    _onLoadStart(){
-    console.log('_onLoadStart')
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      isStart: true,
+      isPause: true,
+    };
+  }
+
+  _onLoadStart(){
+    console.log(this)
   }
 
   _onLoad(){
@@ -45,7 +55,9 @@ class Vedio extends Component{
   }
 
   _onEnd(){
-    console.log('_onEnd')
+    this.setState({
+      isPause: true
+    })
   }
 
   _onError(){
@@ -56,28 +68,47 @@ class Vedio extends Component{
     console.log('_onBuffer')
   }
 
+  _onPress(){
+    if(this.state.isStart){
+      this.setState({
+        isStart: false
+      })
+    }
+
+    this.setState({
+      isPause: !this.state.isPause
+    })
+  }
+
   render(){
     return (
-      <View style={styles.vedio}>
-        {true && <Text>1111</Text>}
-        <Video
-          source={{uri: this.props.vedioUrl}} 
-          rate={1}
-          volume={1}
-          muted={false}
-          paused={true}
-          resizeMode="cover"
-          repeat={false}
-          playInBackground={false}
-          onLoadStart={this._onLoadStart}
-          onLoad={this._onLoad} 
-          onProgress={this._onProgress}
-          onEnd={this._onEnd}
-          onError={this._onError}
-          onBuffer={this._onBuffer}
-          style={styles.vedio}
-        />
-      </View>
+      <TouchableHighlight onPress={() => this._onPress()}>
+        <View style={styles.vedio_container}>
+          {this.state.isPause && <Image style={styles.play} source={IMAGE_PLAY}/>}
+          {this.state.isStart && <Image style={styles.thumb} source={IMAGE_IMG_2203}/>}
+          {!this.state.isStart && <Video
+                    ref={(ref) => {
+                      this.player = ref;
+                    }}    
+                    source={{uri: this.props.vedioUrl}} 
+                    rate={1}
+                    volume={1}
+                    muted={false}
+                    paused={this.state.isPause}
+                    resizeMode="cover"
+                    repeat={false}
+                    playInBackground={false}
+                    onLoadStart={this._onLoadStart}
+                    onLoad={() => this._onLoad()} 
+                    onProgress={this._onProgress}
+                    onEnd={() => this._onEnd()}
+                    onError={this._onError}
+                    onBuffer={this._onBuffer}
+                    style={styles.vedio_video}
+                  />}
+        </View>
+      </TouchableHighlight>
+      
     );
   }
 }
@@ -85,7 +116,17 @@ class Vedio extends Component{
 class RemarkItem extends Component{
   render(){
     return (
-      <Text>11111</Text>
+      <View style={styles.remark_item}>
+        <View style={{marginRight: 10}}>
+          <View style={styles.remark_itemPerson}>
+            <Image style={styles.remark_image} source={{uri: 'https://avatars7.githubusercontent.com/u/13981470?v=4&s=460'}}/>
+            <Text style={styles.remark_name}>Kenshin</Text>
+          </View>
+        </View>
+        <Text>
+          very good
+        </Text>
+      </View>
     );
   }
 }
@@ -106,8 +147,7 @@ export default class VeidoDetail extends Component{
           ItemSeparatorComponent={this._line}
           data={test.list}
           renderItem={({item, index}) => <RemarkItem keys={index} />}
-          ListFooterComponent={<Text>{'2222'}</Text>}
-          ListHeaderComponent={<Text>{'333'}</Text>}
+          ListFooterComponent={<Text style={{textAlign: 'center'}}>{'没有更多了'}</Text>}
           showsVerticalScrollIndicator={false}
           style={styles.remark}
         />
@@ -117,19 +157,26 @@ export default class VeidoDetail extends Component{
 }
 
 const styles = StyleSheet.create({
-  vedio: {
+  vedio_container: {
     position: 'relative',
     width: width,
     height: width * 0.6
   },
 
+  vedio_video: {
+    width: width,
+    height: width * 0.6,
+  },
+
   thumb: {
     width: width,
+    height: width * 0.6,
     resizeMode: 'cover',
   },
 
   play: {
     position: 'absolute',
+    zIndex: 10,
     bottom: 14,
     right: 14,
     width: 46,
@@ -152,5 +199,30 @@ const styles = StyleSheet.create({
   remark: {
     height: height - (width * 0.6) - 25,
     marginLeft:5, marginRight: 5,
+  },
+
+  remark_item: {
+    flex: 1,
+    paddingTop: 5,
+    paddingBottom: 5,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+
+  remark_itemPerson:{
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
+  remark_image: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    resizeMode: 'cover',
+  },
+
+  remark_name: {
+    marginLeft: 5,
   }
 })
