@@ -3,7 +3,9 @@ import {Image, Text, View, StyleSheet} from 'react-native';
 
 import { TabNavigator, StackNavigator } from "react-navigation";
 import VedioList from './Veido/VedioList.js';
-import VedioDetail from './Veido/VedioDetail.js'
+import VedioDetail from './Veido/VedioDetail.js';
+import PostRemark from './Veido/PostRemark.js';
+import Signup from './User/Signup.js';
 
 const IMAGE_VEDIO = require('../public/images/vedio.png'),
       IMAGE_PLUS =  require('../public/images/plus.png'),
@@ -46,8 +48,8 @@ const tabNavigator = TabNavigator({
     }
   },
 
-  test3: {
-    screen: test2, 
+  Signup: {
+    screen: Signup, 
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Image
@@ -90,9 +92,9 @@ const tabNavigator = TabNavigator({
 
 const mainNavigator = StackNavigator({
   tabNavigator: { screen: tabNavigator },
-  VedioDetail: { screen: VedioDetail }
+  VedioDetail: { screen: VedioDetail },
+  PostRemark: {screen: PostRemark}
 }, {
-  headerMode: 'none'
 });
 
 const styles = StyleSheet.create({

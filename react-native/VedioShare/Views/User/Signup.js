@@ -12,6 +12,20 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
+  header: {
+    paddingTop: 12,
+    paddingBottom: 12,
+    marginBottom: 10,
+    backgroundColor: '#ee735c'
+  },
+
+  headerTitle: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: '600'
+  },
+
   headerStyle: {
     height: 45,
     paddingRight: 40
@@ -24,42 +38,44 @@ const styles = StyleSheet.create({
   },
 
   textArea: {
-    height: 200,
     borderWidth: 1,
     backgroundColor: '#fff',
-    marginRight: 10, marginLeft: 10, marginTop: 10, marginBottom: 10,
+    marginRight: 10, marginLeft: 10, marginTop: 5, marginBottom: 5,
     paddingLeft: 5, paddingRight: 5, paddingTop: 5, paddingBottom: 5,
     borderRadius: 5,
     borderWidth: 0,
-    textAlignVertical: 'top',
   },
 
   button: {
-    marginLeft: 10, marginRight: 10,
+    marginLeft: 10, marginRight: 10, marginTop: 10,
   }
 })
 
 export default class PostRemark extends Component{
   static navigationOptions = {
-    title: '输入评论',
-    headerStyle: styles.headerStyle,
-    headerTitleStyle: styles.headerTitleStyle,
-    headerBackTitleStyle: styles.headerTitleStyle
+    header: null
   }
 
   _press = () => {
-    this.props.navigation.navigate('VedioDetail', {vedioUrl: 'https://cdn2.unrealengine.com/ueOverview%2FTopCarousel%2FSizzleForWeb2-3ac4d0248789094033bcfe038a67128bd8bb5733.mp4'});
+    this.props.navigation.navigate('VedioList');
   }
 
   render(){
     return (
       <ScrollView>
         <View>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>用户注册</Text>
+          </View>
           <KeyboardAvoidingView behavior="padding">
             <TextInput
               underlineColorAndroid="transparent"
-              placeholder="输入评论"
-              multiline={true}
+              placeholder="输入用户名"
+              style={styles.textArea}
+            />
+            <TextInput
+              underlineColorAndroid="transparent"
+              placeholder="输入密码"
               style={styles.textArea}
             />
             <View style={styles.button}>
@@ -75,4 +91,3 @@ export default class PostRemark extends Component{
     );
   }
 }
-

@@ -33,6 +33,8 @@ for(let i = 0; i < 30; i++){
 const {width, height} = Dimensions.get('window');
 
 class Vedio extends Component{
+  
+
   constructor(props) {
     super(props);
   
@@ -132,6 +134,10 @@ class RemarkItem extends Component{
 }
 
 export default class VeidoDetail extends Component{
+  static navigationOptions = {
+    header: null
+  }
+  
   _line(){
     return (
       <View style={styles.line}></View>

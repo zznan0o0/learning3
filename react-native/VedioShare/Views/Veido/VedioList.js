@@ -80,10 +80,12 @@ class Item extends Component{
                 <Text style={styles.handleText}>喜欢</Text>
               </View>
             </TouchableWithoutFeedback>
-            <View style={styles.handleBox}>
-              <Image style={styles.commentIcon} source={IMAGE_REMARK}/>
-              <Text style={styles.handleText}>评论</Text>
-            </View>
+            <TouchableWithoutFeedback onPress={() => this.props.navigatorToRemark()}>
+              <View style={styles.handleBox}>
+                <Image style={styles.commentIcon} source={IMAGE_REMARK}/>
+                <Text style={styles.handleText}>评论</Text>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
       </TouchableHighlight>
@@ -92,6 +94,10 @@ class Item extends Component{
 }
 
 export default class VedioList extends Component{
+  static navigationOptions = {
+    header: null
+  }
+
   constructor(props) {
     super(props);
 
@@ -129,11 +135,16 @@ export default class VedioList extends Component{
   }
 
   _renderRow(row){
-    return <Item Press={this._press(row)} row={row}/>
+    return <Item Press={this._press(row)} navigatorToRemark={this._navigatorToRemark(row)} row={row}/>
   }
 
   _press(row){
     return () => this.props.navigation.navigate('VedioDetail', {title: row.title, voted: row.voted, vedioUrl: testData.vedioUrl});
+  }
+
+  _navigatorToRemark(row){
+
+    return () => this.props.navigation.navigate('PostRemark', {title: row.title});
   }
 
   _hasMore(){
