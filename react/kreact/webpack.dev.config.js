@@ -19,6 +19,7 @@ module.exports = {
     path.join(__dirname, 'src/index.jsx')
   ],
 
+  devtool: 'inline-source-map',
   /*输出到dist文件夹，输出文件名字为bundle.js*/
   output: {
     path: path.join(__dirname, './dist'),

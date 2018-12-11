@@ -1,7 +1,9 @@
-import counter from './Reducers/Counter.js';
+import Counter from 'Reducers/Counter.js';
+import UserInfo from 'Reducers/UserInfo.js';
 
 export default function combineReducers(state = {}, action) {
   return {
-    counter: counter(state.counter, action)
+    counter: Counter(state.counter, action),
+    userInfo: UserInfo(state.userInfo, action)
   }
 }

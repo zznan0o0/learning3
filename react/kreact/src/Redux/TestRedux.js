@@ -1,4 +1,4 @@
-import { increment, decrement, reset } from './actions/counter';
+import { increment, decrement, reset } from './Actions/Counter';
 
 import Store from './Store.js';
 

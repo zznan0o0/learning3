@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, RESET } from '../actions/counter';
+import { INCREMENT, DECREMENT, RESET } from 'Actions/Counter.js';
 
 /*
  * 初始化state

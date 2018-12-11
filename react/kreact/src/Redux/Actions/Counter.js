@@ -1,6 +1,6 @@
-export const INCREMENT = "counter/INCREMENT";
-export const DECREMENT = "counter/DECREMENT";
-export const RESET = "counter/RESET";
+export const INCREMENT = "Counter/INCREMENT";
+export const DECREMENT = "Counter/DECREMENT";
+export const RESET = "Counter/RESET";
 
 export function increment() {
   return { type: INCREMENT }
