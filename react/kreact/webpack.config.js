@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   resolve: {
@@ -43,8 +43,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          // 'style-loader', 
+          // MiniCssExtractPlugin.loader,
+          'style-loader', 
           'css-loader'
         ]
       },
@@ -76,10 +76,10 @@ module.exports = {
       }
     }),
 
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: "css/style.css",
+    //   chunkFilename: "[id].css"
+    // }),
 
 
 
@@ -99,6 +99,23 @@ module.exports = {
           name: "vendor",
           chunks: "initial",
           minChunks: 2
+        },
+
+        vendor: {
+          name: 'vendor',
+          chunks: 'initial',
+          priority: -10,
+          reuseExistingChunk: false,
+          test: /node_modules\/(.*)\.js/
+        },
+
+        styles: {
+          name: 'styles',
+          test: /\.(scss|css)$/,
+          chunks: 'all',
+          minChunks: 1,
+          reuseExistingChunk: true,
+          enforce: true
         }
       }
     },
