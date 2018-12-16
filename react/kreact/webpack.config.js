@@ -1,74 +1,77 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
-  resolve: {
-    alias: {
-      Pages: path.join(__dirname, 'src/Pages'),
-      Components: path.join(__dirname, 'src/Components'),
-      Routes: path.join(__dirname, 'src/Routes'),
-      Actions: path.join(__dirname, 'src/Redux/Actions'),
-      Reducers: path.join(__dirname, 'src/Redux/Reducers'),
-      Redux: path.join(__dirname, 'src/Redux'),
-      public: path.join(__dirname, 'public'),
-    }
-  },
+const merge = require('webpack-merge');
+const commonConfig = require('./webpack.common.config.js');
+
+const proConfig = {
+  // resolve: {
+  //   alias: {
+  //     Pages: path.join(__dirname, 'src/Pages'),
+  //     Components: path.join(__dirname, 'src/Components'),
+  //     Routes: path.join(__dirname, 'src/Routes'),
+  //     Actions: path.join(__dirname, 'src/Redux/Actions'),
+  //     Reducers: path.join(__dirname, 'src/Redux/Reducers'),
+  //     Redux: path.join(__dirname, 'src/Redux'),
+  //     public: path.join(__dirname, 'public'),
+  //   }
+  // },
 
   devtool: 'cheap-module-source-map',
-  entry: {
-    app: [
-      path.join(__dirname, 'src/index.jsx')
-    ],
-    vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
-  },
-  output: {
-    path: path.join(__dirname, './dist'),
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
-    publicPath: '/'
-  },
-  module: {
-    rules: [
+  // entry: {
+  //   app: [
+  //     path.join(__dirname, 'src/index.jsx')
+  //   ],
+  //   vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
+  // },
+  // output: {
+  //   path: path.join(__dirname, './dist'),
+  //   filename: '[name].[chunkhash].js',
+  //   chunkFilename: '[name].[chunkhash].js',
+  //   publicPath: '/'
+  // },
+  // module: {
+  //   rules: [
 
-      {
-        test: /\.js|\.jsx$/,
-        use: ['babel-loader'],
-        include: path.join(__dirname, 'src')
-      },
+  //     {
+  //       test: /\.js|\.jsx$/,
+  //       use: ['babel-loader'],
+  //       include: path.join(__dirname, 'src')
+  //     },
 
-      {
-        test: /\.css$/,
-        use: [
-          // MiniCssExtractPlugin.loader,
-          'style-loader', 
-          'css-loader'
-        ]
-      },
+  //     {
+  //       test: /\.css$/,
+  //       use: [
+  //         // MiniCssExtractPlugin.loader,
+  //         'style-loader', 
+  //         'css-loader'
+  //       ]
+  //     },
 
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 8192
-          }
-        }]
-      },
+  //     {
+  //       test: /\.(png|jpg|gif)$/,
+  //       use: [{
+  //         loader: 'url-loader',
+  //         options: {
+  //           limit: 8192
+  //         }
+  //       }]
+  //     },
 
 
-    ]
-  },
+  //   ]
+  // },
   plugins: [
     new CleanWebpackPlugin(['dist/*.*']),
 
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(__dirname, 'src/index.html')
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: path.join(__dirname, 'src/index.html')
+    // }),
 
     new webpack.DefinePlugin({
       'process.env': {
@@ -137,3 +140,5 @@ module.exports = {
 
 
 };
+
+module.exports = merge(commonConfig, proConfig);
