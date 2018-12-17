@@ -22,12 +22,12 @@ const proConfig = {
   // },
 
   devtool: 'cheap-module-source-map',
-  // entry: {
-  //   app: [
-  //     path.join(__dirname, 'src/index.jsx')
-  //   ],
-  //   vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
-  // },
+  entry: {
+    app: [
+      path.join(__dirname, 'src/index.jsx')
+    ],
+    // vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
+  },
   // output: {
   //   path: path.join(__dirname, './dist'),
   //   filename: '[name].[chunkhash].js',

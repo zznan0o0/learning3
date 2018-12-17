@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-import Nav from 'components/Nav/Nav';
-import Routes from 'Routes/router';
+import Routes from 'Routes/Routes.jsx';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Nav/>
         {Routes}
       </div>
     )

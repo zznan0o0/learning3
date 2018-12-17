@@ -17,7 +17,7 @@ const commonConfig = {
 
   entry: {
     app: [
-      path.join(__dirname, 'src/index.jsx')
+      // path.join(__dirname, 'src/index.jsx')
     ],
     vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
   },

@@ -22,7 +22,7 @@ const devConfig = {
   entry: {
     app: [
       'react-hot-loader/patch',
-      // path.join(__dirname, 'src/index.jsx')
+      path.join(__dirname, 'src/indexDev.jsx')
     ],
     // vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
   },
