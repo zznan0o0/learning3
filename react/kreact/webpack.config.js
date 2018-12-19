@@ -45,7 +45,7 @@ module.exports = {
         use: [
           // MiniCssExtractPlugin.loader,
           'style-loader', 
-          'css-loader',
+          'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
           'postcss-loader'
         ]
       },
