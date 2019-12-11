@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -28,8 +29,8 @@ module.exports = {
   /*输出到dist文件夹，输出文件名字为bundle.js*/
   output: {
     path: path.join(__dirname, './dist'),
-    filename: '[name].[hash].js', //这里生产环境应该用chunkhash替换hash
-    chunkFilename: '[name].[chunkhash].js'
+    filename: 'build/js/[name].[hash].js',
+    chunkFilename: 'build/js/[name].[chunkhash].js',
   },
   //loader 让 webpack 能够去处理那些非 JavaScript 文件
   module: {
@@ -41,7 +42,14 @@ module.exports = {
 
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader?modules&localIdentName=[local]-[hash:base64:5]', 'postcss-loader']
+      },
+
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader']
       },
 
       {
@@ -49,7 +57,8 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 8192
+            limit: 8192,
+            name: 'build/images/[hash:8].[name].[ext]'
           }
         }]
       }
@@ -57,6 +66,8 @@ module.exports = {
   },
   //插件
   plugins: [
+    new CleanWebpackPlugin(['dist/*']),
+    
     new webpack.HotModuleReplacementPlugin(),
 
     new HtmlWebpackPlugin({

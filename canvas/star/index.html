@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; border: 0;}
+    html,body{width: 100%; height: 100%; background: #000;}
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var w = window.innerWidth, h = window.innerHeight;
+    var hue = 217;
+    canvas.width  = w;
+    canvas.height = h;
+    var CenterX = w / 2;
+    var CenterY = h / 2;
+
+    var StarArray = [];
+    var GenStarNum = 1;
+
+    var ctx=canvas.getContext("2d");
+
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+    ctx.fillRect(0, 0, w, h)
+
+
+    function genStar(){
+      var x = Math.floor(Math.random() * w), y = Math.floor(Math.random() * h);
+      // x = x - CenterX;
+      // y = y - CenterY;
+      var r = Math.floor(Math.random() * 40) + 10;
+      var a = Math.random();
+
+      return {
+        x: x,
+        y: y,
+        r: r,
+        a: a,
+        decay: 1,
+      };
+    }
+
+    function drawStar(x,y,r,a){
+      ctx.beginPath();
+      // var x = 100, y = 100, r = 20;
+      
+      ctx.arc(x, y, r, 0, 2*Math.PI);
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.strokeStyle = 'transparent';
+      var grd=ctx.createRadialGradient(x,y,0,x,y,r);
+
+      grd.addColorStop(0.025, '#CCC');
+      grd.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+      grd.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+      grd.addColorStop(1, 'transparent');
+
+      ctx.globalAlpha = a;
+      ctx.fillStyle=grd;
+      ctx.fill();
+    }
+
+    function moveStar(){
+      var tmp_arr = [];
+      StarArray.forEach(function(star, index){
+        var speed = 0.01;
+        star.x += (star.x - CenterX) * speed;
+        star.y += (star.y - CenterY) * speed;
+        if(star.a >= 1){
+          star.decay = -1
+        }
+        
+        if(star.a <= 0.2){
+          star.decay = 1
+        }
+        star.a += speed*star.decay;
+        
+
+        if(star.x < w && star.x > 0 && star.y < h && star.y > 0){
+          tmp_arr.push(star);
+        }
+      });
+
+      StarArray = tmp_arr;
+    }
+
+    function animation(){
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 0.5;                                 //尾巴
+      ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+      // ctx.clearRect(0,0,w,h);
+      ctx.fillRect(0, 0, w, h)
+
+      ctx.globalCompositeOperation = 'lighter';
+
+      moveStar();
+
+      for(var i = 0; i < GenStarNum; i++){
+        StarArray.push(genStar());
+      }
+
+      StarArray.forEach(function(v){
+        drawStar(v.x, v.y, v.r, v.a);
+      });
+
+     
+
+      window.requestAnimationFrame(animation);
+    }
+    animation();
+  </script>
+</body>
+</html>

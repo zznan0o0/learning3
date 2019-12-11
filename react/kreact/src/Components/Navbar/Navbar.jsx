@@ -9,6 +9,8 @@ export default class Navbar extends Component {
         <li><Link to="/page1">Page1</Link></li>
         <li><Link to="/Counter">Counter</Link></li>
         <li><Link to="/UserInfo">UserInfo</Link></li>
+        <li><Link to="/SubPage">SubPage</Link></li>
+        <li><Link to="/RoutePage">RoutePage</Link></li>
       </ul>
     );
   }

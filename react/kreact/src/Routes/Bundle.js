@@ -33,4 +33,22 @@ class Bundle extends Component {
   }
 }
 
+const Loading = function () {
+  return <div>Loading...</div>
+};
+
+
+const createComponent = (component) => (props) => (
+  <Bundle load={component}>
+    {
+      (Component) => Component ? <Component {...props} /> : <Loading />
+    }
+  </Bundle>
+);
+Bundle.createComponent = createComponent;
+
 export default Bundle;
+export {
+  Bundle,
+  createComponent,
+}
